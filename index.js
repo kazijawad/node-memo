@@ -19,7 +19,7 @@ class NodeMemo {
      * @return {number}
      */
     static get Minute() {
-        return 1000 * 60;
+        return NodeMemo.Second * 60;
     }
 
     /**
@@ -27,7 +27,7 @@ class NodeMemo {
      * @return {number}
      */
     static get Hour() {
-        return NodeCache.Minute * 60;
+        return NodeMemo.Minute * 60;
     }
 
     /**
@@ -35,7 +35,7 @@ class NodeMemo {
      * @return {number}
      */
     static get Day() {
-        return NodeCache.Hour * 24;
+        return NodeMemo.Hour * 24;
     }
 
     /**

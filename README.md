@@ -25,8 +25,8 @@ const NodeMemo = require('node-memo');
 
 Create a cache.
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param  | Type     | Description               |
+| ------ | -------- | ------------------------- |
 | maxAge | `number` | The max age of the cache. |
 
 ### this.maxAge ⇒ `number`
@@ -41,8 +41,8 @@ Set the max age of the cache.
 
 **Kind**: instance property of NodeMemo
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param  | Type     | Description                   |
+| ------ | -------- | ----------------------------- |
 | newAge | `number` | The new max age of the cache. |
 
 ### this.get(key) ⇒ `*`
@@ -51,9 +51,9 @@ Get the value for the specified key in the cache.
 
 **Kind**: instance method of NodeMemo
 
-| Param | Type | Description |
-| --- | --- | --- |
-| key | `*` | The key tied to the data in the cache. |
+| Param | Type | Description                            |
+| ----- | ---- | -------------------------------------- |
+| key   | `*`  | The key tied to the data in the cache. |
 
 ### this.set(key, value)
 
@@ -61,10 +61,10 @@ Set a key and value in the cache.
 
 **Kind**: instance method of NodeMemo
 
-| Param | Type | Description |
-| --- | --- | --- |
-| key | `*` | The key tied to the value in the cache. |
-| value | `*` | The value tied to the key in the cache. |
+| Param | Type | Description                             |
+| ----- | ---- | --------------------------------------- |
+| key   | `*`  | The key tied to the value in the cache. |
+| value | `*`  | The value tied to the key in the cache. |
 
 ### this.delete(key)
 
@@ -72,9 +72,9 @@ Delete an entry in the cache.
 
 **Kind**: instance method of NodeMemo
 
-| Param | Type | Description |
-| --- | --- | --- |
-| key | `*` | The key tied to the value in the cache. |
+| Param | Type | Description                             |
+| ----- | ---- | --------------------------------------- |
+| key   | `*`  | The key tied to the value in the cache. |
 
 ### this.has(key) ⇒ `boolean`
 
@@ -82,9 +82,9 @@ Check if a key-value pair exists in the cache.
 
 **Kind**: instance method of NodeMemo
 
-| Param | Type | Description |
-| --- | --- | --- |
-| key | `*` | The specified key in the cache. |
+| Param | Type | Description                     |
+| ----- | ---- | ------------------------------- |
+| key   | `*`  | The specified key in the cache. |
 
 ### this.keys() ⇒ `*[]`
 
@@ -110,9 +110,9 @@ Get the current time of a cached item.
 
 **Kind**: instance method of NodeMemo
 
-| Param | Type | Description |
-| --- | --- | --- |
-| key | `*` | The specified key in the cache. |
+| Param | Type | Description                     |
+| ----- | ---- | ------------------------------- |
+| key   | `*`  | The specified key in the cache. |
 
 ### this.clear()
 
@@ -150,9 +150,9 @@ Wait a set amount of time.
 
 **Kind**: static property of NodeMemo
 
-| Param | Type | Description |
-| --- | --- | --- |
-| ms | `number` | The amount of time to wait in milliseconds. |
+| Param | Type     | Description                                 |
+| ----- | -------- | ------------------------------------------- |
+| ms    | `number` | The amount of time to wait in milliseconds. |
 
 ## Author
 
