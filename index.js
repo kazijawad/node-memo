@@ -1,7 +1,7 @@
 /**
  * An in-memory cache module.
  */
-class MemoryCache {
+class NodeMemo {
     #maxAge;
     #data;
     #times;
@@ -36,6 +36,20 @@ class MemoryCache {
      */
     static get Day() {
         return NodeCache.Hour * 24;
+    }
+
+    /**
+     * Wait a set amount of time.
+     * @param {number} ms - The amount of time to wait in milliseconds;
+     * @return {Promise}
+     */
+    static async Wait(ms) {
+        if (Number.isNaN(Number(ms))) {
+            throw new Error('wait: Expected number input.');
+        }
+        return new Promise(function(resolve) {
+            return setTimeout(resolve, ms);
+        });
     }
 
     /**
@@ -75,14 +89,7 @@ class MemoryCache {
     get(key) {
         const datum = this.#data.get(key);
         const time = this.#times.get(key);
-        if (!datum || !time || this.#expired(time)) {
-            if (datum || time) {
-                this.#data.delete(key);
-                this.#times.delete(key);
-            }
-            return null;
-        }
-        return datum;
+        return datum || null;
     }
 
     /**
@@ -93,6 +100,22 @@ class MemoryCache {
     set(key, value) {
         this.#data.set(key, value);
         this.#times.set(key, Date.now());
+        setTimeout(() => this.delete(key), this.maxAge);
+    }
+
+    /**
+     * Delete an entry in the cache.
+     * @param {*} key - The key tied to the value in the cache.
+     * @return {boolean}
+     */
+    delete(key) {
+        if (this.has(key)) {
+            this.#data.delete(key);
+            this.#times.delete(key);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -101,13 +124,7 @@ class MemoryCache {
      * @return {boolean}
      */
     has(key) {
-        if (this.#data.has(key) || this.#times.has(key)) {
-            const time = this.#times.get(key);
-            if (time && this.#expired(time)) {
-                this.#data.delete(key);
-                this.#times.delete(key);
-                return false;
-            }
+        if (this.#data.has(key) && this.#times.has(key)) {
             return true;
         }
         return false;
@@ -115,18 +132,38 @@ class MemoryCache {
 
     /**
      * Get the keys in the cache.
-     * @return {?Iterator}
+     * @return {*[]}
      */
     keys() {
-        return this.#data.keys() || null;
+        const keys = [];
+        for (const key of this.#data.keys()) {
+            keys.push(key);
+        }
+        return keys;
     }
 
     /**
      * Get the values in the cache.
-     * @return {?Iterator}
+     * @return {*[]}
      */
     values() {
-        return this.#data.values() || null;
+        const values = [];
+        for (const value of this.#data.values()) {
+            values.push(value);
+        }
+        return values;
+    }
+
+    /**
+     * Get the entries in the cache.
+     * @return {*[]}
+     */
+    entries() {
+        const entries = [];
+        for (const entry of this.#data.entries()) {
+            entries.push(entry);
+        }
+        return entries;
     }
 
     /**
@@ -136,13 +173,7 @@ class MemoryCache {
      */
     time(key) {
         const time = this.#times.get(key);
-        if (time && !this.#expired(time)) {
-            return Date.now() - time;
-        } else if (time) {
-            this.#data.delete(key);
-            this.#times.delete(key);
-        }
-        return null;
+        return time ? Date.now() - time : null;
     }
 
     /**
@@ -158,4 +189,4 @@ class MemoryCache {
     }
 }
 
-module.exports = MemoryCache;
+module.exports = NodeMemo;
