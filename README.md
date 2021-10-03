@@ -11,11 +11,11 @@ const NodeMemo = require('node-memo');
     const cache = new NodeMemo(NodeMemo.Second * 5);
 
     cache.set('key', 'value');
-    console.log(cache.get('key')) // 'value'
+    console.log(cache.get('key')); // 'value'
 
     await NodeMemo.wait(NodeMemo.Second * 5);
 
-    console.log(cache.get('key')) // null
+    console.log(cache.get('key')); // null
 })();
 ```
 
@@ -144,7 +144,7 @@ Get 1 day in milliseconds.
 
 **Kind**: static property of NodeMemo
 
-### NodeMemo.Wait(ms) ⇒ `Promise`
+### NodeMemo.wait(ms) ⇒ `Promise`
 
 Wait a set amount of time.
 
@@ -152,7 +152,7 @@ Wait a set amount of time.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| ms | `number` | The amount of time to wait in milliseconds; |
+| ms | `number` | The amount of time to wait in milliseconds. |
 
 ## Author
 

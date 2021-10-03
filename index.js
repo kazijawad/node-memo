@@ -43,7 +43,7 @@ class NodeMemo {
      * @param {number} ms - The amount of time to wait in milliseconds;
      * @return {Promise}
      */
-    static async Wait(ms) {
+    static async wait(ms) {
         if (Number.isNaN(Number(ms))) {
             throw new Error('wait: Expected number input.');
         }
