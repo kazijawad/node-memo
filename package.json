@@ -1,0 +1,16 @@
+{
+    "name": "node-memo",
+    "description": "An in-memory cache module.",
+    "version": "0.0.1",
+    "license": "MIT",
+    "author": "Kazi Jawad",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kazijawad/node-memo.git"
+    },
+    "bugs": {
+        "url": "https://github.com/kazijawad/node-memo/issues"
+    },
+    "homepage": "https://github.com/kazijawad/node-memo#readme"
+}
